@@ -59,7 +59,6 @@ router.get('/spotify-choose', function (req, res) {
 })
 
 // ================================================================
-
 router.get('/spotify-create', function (req, res) {
   const isMix = !!req.query.isMix
 
@@ -111,8 +110,6 @@ router.post('/spotify-create', function (req, res) {
     Playlist.makeMix(playlist)
   }
 
-  console.log(playlist)
-
   res.render('spotify-playlist', {
     name: 'spotify-playlist',
 
@@ -123,7 +120,6 @@ router.post('/spotify-create', function (req, res) {
     },
   })
 })
-
 // ================================================================
 
 router.get('/spotify-playlist', function (req, res) {
@@ -149,6 +145,38 @@ router.get('/spotify-playlist', function (req, res) {
       playlistId: playlist.id,
       tracks: playlist.tracks,
       name: playlist.name,
+    },
+  })
+})
+
+router.get('/spotify-playlist-delete', function (req, res) {
+  const playlistId = Number(req.query.playlistId)
+
+  const playlist = Playlist.getById(playlistId)
+
+  if (!playlist) {
+    return res.render('alert', {
+      name: 'alert',
+      data: {
+        message: 'Error',
+        info: 'No playlist found',
+        link: `/spotify-playlist?id=${playlistId}`,
+      },
+    })
+  }
+
+  Playlist.deleteById(playlistId)
+
+  const list = Playlist.getList()
+
+  res.render('spotify-library', {
+    name: 'spotify-library',
+
+    data: {
+      list: list.map(({ tracks, ...rest }) => ({
+        ...rest,
+        amount: tracks.length,
+      })),
     },
   })
 })
@@ -224,6 +252,7 @@ router.post('/spotify-search', function (req, res) {
     },
   })
 })
+
 // ================================================================
 router.get('/spotify-track-add', function (req, res) {
   const playlistId = Number(req.query.playlistId)

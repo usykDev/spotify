@@ -5,10 +5,11 @@
 
 
 
-		<form method="POST" action="/spotify-search" class="search">
+		<form id="spotify-search-form" method="POST" action="/spotify-search" class="search">
 			<img src="/svg/spotify-search.svg">
-			<input type="search" class="search__input" placeholder="Enter your request" name="value" value="{{value}}">
-			<button class="search__button">Search</button>
+			<input id="search-input" type="search" class="search__input" placeholder="Enter a playlist name"
+				name="value" value="{{value}}">
+			<button id="search-button" type="submit" class="search__button">Search</button>
 		</form>
 
 		<ul class="playlist__list">

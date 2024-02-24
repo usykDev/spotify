@@ -9,9 +9,9 @@
 		<h1 class="title title--center title--small">Name your playlist</h1>
 
 		<form method="POST" action="/spotify-create{{#if data.isMix}}?isMix=true{{/if}}" class="form">
-			<input type="text" class="form__field" placeholder="Name" name="name">
+			<input required type="text" class="form__field" placeholder="Name" name="name">
 
-			<button class="form__button">Continue</button>
+			<button class="form__button">Create</button>
 		</form>
 
 	</div>

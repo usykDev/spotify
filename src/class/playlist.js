@@ -27,6 +27,22 @@ class Playlist {
     return newPlaylist
   }
 
+  static deleteById(id) {
+    const indexToDelete = this.#list.findIndex(
+      (playlist) => playlist.id === id,
+    )
+
+    if (indexToDelete !== -1) {
+      const deletedPlaylist = this.#list.splice(
+        indexToDelete,
+        1,
+      )[0]
+      return deletedPlaylist
+    } else {
+      return null
+    }
+  }
+
   static getList() {
     return this.#list.reverse()
   }

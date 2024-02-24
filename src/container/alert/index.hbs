@@ -1,21 +1,10 @@
-{{!
-Це код container файлу для index сторінки,
-в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
-}}
-
 <div class="alert">
 	<div class="alert__content">
 		{{#with data}}
 		<h1 class="alert__title">{{message}}</h1>
 		<div class="alert__info">{{info}}</div>
 	</div>
-	<button class="alert__button-back"> <a href="{{link}}">Go back</a> </button>
+	<button class="form__button"> <a href="{{link}}">Go back</a> </button>
 	{{/with}}
 </div>
 
-{{!
-Цей код містить лише те, що буде виводитись в
-
-<body>
-	Адже наш layout/default.hbs має вже структуру HTML
-	}}

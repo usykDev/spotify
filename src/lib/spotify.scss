@@ -11,14 +11,14 @@ a {
 	}
 }
 
-
 .main {
 	background-color: s.color(dark);
 
 	height: 100%;
 
 	color: s.color(light);
-
+	max-width: 720px;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	padding: s.space(6) s.space(2);
@@ -95,20 +95,47 @@ a {
 		font-size: 16px;
 		color: s.color(light);
 	}
-
 }
+
+.add-button {
+	display: grid;
+	grid-template-columns: 92px 1fr;
+	align-items: center;
+	gap: s.space(6);
+	color: s.color(light);
+	font-size: 18px;
+}
+
+
 
 .form__button {
 	color: s.color(dark);
-	background-color: #20D562;
-	max-width: fit-content;
+	background-color: s.color(green);
+	width: 100%;
 	font-size: 20px;
 	padding: s.space(3) s.space(10);
 	border-radius: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+
 
 	transition: opacity 0.6s;
+
+	&--delete {
+		background-color: s.color(red);
+	}
 
 	&:hover {
 		opacity: 0.6;
 	}
 } 
+
+.form__footer {
+	display: flex;
+	flex-direction: column;
+	gap: s.space(5);
+	justify-content: center;
+	align-items: center;
+}
